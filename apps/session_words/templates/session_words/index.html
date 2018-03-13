@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'session_words/index.html' %}">
+</head>
+<body>
+    <h2>Add a new word</h2>
+    <form action="/add_word/" method="post">
+    {% csrf_token %}
+    <textarea name="desc"></textarea>
+    <p>Choose color</p>
+    Red<input type="radio" name="color">
+    Green<input type="radio" name="color">
+    Blue<input type="radio" name="color">
+    <input type="checkbox" name="fonts">show in BIG fonts!
+    <p>
+    <input type="submit" value="Add to Session">
+    </p>
+    </form>
+    <p>{{request.session.desc}}-added on {{time}}</p>
+    
+</body>
+</html>
